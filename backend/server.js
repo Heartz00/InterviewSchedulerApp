@@ -45,6 +45,17 @@ app.get("/api/booked-slots", async (req, res) => {
   }
 });
 
+app.delete("/api/delete-slot/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    // Delete the slot from the database
+    await SlotModel.findByIdAndDelete(id);
+    res.status(200).json({ message: "Slot deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to delete slot" });
+  }
+});
+
 // API to create multiple slots for specific days and times
 app.post("/api/create-slots", async (req, res) => {
   const { days, times } = req.body;
