@@ -45,8 +45,8 @@ const InterviewScheduler = () => {
     <div className={`min-h-screen flex flex-col items-center justify-center ${darkMode ? "bg-black text-white" : "bg-gray-50 text-gray-900"} transition-colors duration-500`}>
       <div className="p-8 w-full max-w-xl text-center">
         <motion.h1 initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}
-          className="text-4xl font-semibold tracking-wide mb-6">Pax Interview Scheduler</motion.h1>
-        
+          className="text-4xl font-semibold tracking-wide mb-6">Welcome</motion.h1>
+        <p>Book a comfortable time slot for your interview</p>
         <button onClick={() => setDarkMode(!darkMode)} className="mb-6 p-2 rounded-full bg-gray-800 text-white hover:bg-gray-600 transition-all">
           {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
         </button>
@@ -57,10 +57,16 @@ const InterviewScheduler = () => {
         )}
 
         <div className="mt-6 space-y-4">
+          <form>
+            <tr> Name: 
           <input type="text" placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)}
             className="w-full p-3 rounded-lg bg-gray-900 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500" />
+            </tr>
+            <tr> Email: 
           <input type="email" placeholder="Your Email" value={email} onChange={(e) => setEmail(e.target.value)}
             className="w-full p-3 rounded-lg bg-gray-900 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500" />
+              </tr>
+            </form>
         </div>
 
         <h2 className="text-2xl font-semibold mt-8">Available Slots</h2>
