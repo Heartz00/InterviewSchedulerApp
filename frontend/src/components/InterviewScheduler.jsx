@@ -87,23 +87,35 @@ const InterviewScheduler = () => {
         <h2 className="slots-heading">Available Slots</h2>
         <div className="slots-container">
           {slots.length > 0 ? (
-            slots.map((slot) => (
-              <motion.div
-                key={slot.id}
-                whileHover={{ scale: 1.03 }}
-                transition={{ duration: 0.3 }}
-                className="slot-card"
-              >
-                <span className="slot-time">{new Date(slot.date_time).toLocaleString()}</span>
-                <button
-                  onClick={() => bookSlot(slot.id)}
-                  disabled={loadingSlots[slot.id]}
-                  className="book-button"
-                >
-                  {loadingSlots[slot.id] ? "Booking..." : "Book Now"}
-                </button>
-              </motion.div>
-            ))
+            <table className="slots-table">
+              <thead>
+                <tr>
+                  <th>Date & Time</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {slots.map((slot) => (
+                  <motion.tr
+                    key={slot.id}
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.2 }}
+                    className="slot-row"
+                  >
+                    <td>{new Date(slot.date_time).toLocaleString()}</td>
+                    <td>
+                      <button
+                        onClick={() => bookSlot(slot.id)}
+                        disabled={loadingSlots[slot.id]}
+                        className="book-button"
+                      >
+                        {loadingSlots[slot.id] ? "Booking..." : "Book Now"}
+                      </button>
+                    </td>
+                  </motion.tr>
+                ))}
+              </tbody>
+            </table>
           ) : (
             <p className="no-slots">No available slots.</p>
           )}
