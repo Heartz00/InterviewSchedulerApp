@@ -120,6 +120,9 @@ const AdminPanel = () => {
         )}
 
         <div className="days-times-section">
+        <h4 className="days-times-heading" style={{ fontStyle: "italic" }}>
+          Note that the times you create will be applicable for each day you create.
+        </h4>
           <h3 className="days-times-heading">Select Days</h3>
           {days.map((day, index) => (
             <div key={index} className="input-group">
