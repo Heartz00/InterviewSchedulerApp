@@ -93,6 +93,21 @@ const AdminPanel = () => {
     }
   };
 
+  // Function to delete a specific slot
+  const deleteSlot = async (slotId) => {
+    if (!window.confirm("Are you sure you want to delete this slot?")) {
+      return;
+    }
+
+    try {
+      await axios.delete(`https://attendance-app-phi.vercel.app/api/delete-slot/${slotId}`);
+      setCreateMessage("Slot deleted successfully!");
+      setBookedSlots(bookedSlots.filter((slot) => slot.id !== slotId)); // Remove the deleted slot from the list
+    } catch (error) {
+      setCreateMessage("Failed to delete slot. Please try again.");
+    }
+  };
+
   return (
     <div className="admin-panel">
       {/* Create Slots Section */}
@@ -174,6 +189,7 @@ const AdminPanel = () => {
                 <th>Date & Time</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Action</th> {/* New column for the delete button */}
               </tr>
             </thead>
             <tbody>
@@ -182,6 +198,14 @@ const AdminPanel = () => {
                   <td>{new Date(slot.date_time).toLocaleString()}</td>
                   <td>{slot.applicant_name}</td>
                   <td>{slot.applicant_email}</td>
+                  <td>
+                    <button
+                      onClick={() => deleteSlot(slot.id)}
+                      className="delete-button"
+                    >
+                      Delete
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
