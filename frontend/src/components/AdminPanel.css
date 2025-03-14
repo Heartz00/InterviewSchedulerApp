@@ -246,3 +246,24 @@
   text-align: center; /* Center-align loading text */
   font-size: 1rem; /* Standard font size */
 }
+
+/* Delete Button */
+.delete-button {
+  padding: 0.5rem 1rem; /* px-4 py-2 */
+  border-radius: 0.375rem; /* rounded-md */
+  font-weight: 500; /* font-medium */
+  color: white;
+  background-color: #ef4444; /* bg-red-500 */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.delete-button:hover {
+  background-color: #dc2626; /* hover:bg-red-600 */
+}
+
+.delete-button:disabled {
+  background-color: #fca5a5; /* disabled:bg-red-300 */
+  cursor: not-allowed;
+}
