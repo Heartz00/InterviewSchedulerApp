@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Button, Card, Input } from "./ui/Button";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 const InterviewScheduler = () => {
   const [slots, setSlots] = useState([]);
@@ -8,126 +8,74 @@ const InterviewScheduler = () => {
   const [email, setEmail] = useState("");
   const [loadingSlots, setLoadingSlots] = useState({});
   const [message, setMessage] = useState("");
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
 
-  // Fetch available slots on component mount
   useEffect(() => {
     const fetchSlots = async () => {
       try {
         const response = await axios.get("https://attendance-app-phi.vercel.app/api/slots");
         setSlots(response.data);
       } catch (error) {
-        console.error("Failed to fetch slots:", error);
         setMessage("Failed to fetch available slots. Please try again later.");
       }
     };
-
     fetchSlots();
   }, []);
 
-  // Handle slot booking
   const bookSlot = async (slotId) => {
     if (!name || !email) {
       setMessage("Please enter your name and email before booking.");
       return;
     }
 
-    // Set loading state for this specific slot
     setLoadingSlots((prev) => ({ ...prev, [slotId]: true }));
 
     try {
-      const response = await axios.post("https://attendance-app-phi.vercel.app/api/book", {
-        slotId,
-        name,
-        email,
-      });
+      await axios.post("https://attendance-app-phi.vercel.app/api/book", { slotId, name, email });
       setMessage("Interview slot booked successfully!");
-      setSlots(slots.filter((slot) => slot.id !== slotId)); // Remove the booked slot
+      setSlots(slots.filter((slot) => slot.id !== slotId));
     } catch (error) {
       setMessage("Failed to book slot. Someone may have taken it already.");
     } finally {
-      // Reset loading state for this specific slot
       setLoadingSlots((prev) => ({ ...prev, [slotId]: false }));
     }
   };
 
-  // Toggle dark mode
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
   return (
-    <div className={`min-h-screen ${darkMode ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"}`}>
-      <div className="p-6 max-w-4xl mx-auto">
-        {/* Header */}
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold">Interview Scheduler</h1>
-          <button
-            onClick={toggleDarkMode}
-            className={`p-2 rounded-full ${darkMode ? "bg-gray-700" : "bg-gray-200"}`}
-          >
-            {darkMode ? "🌙" : "☀️"}
-          </button>
-        </div>
+    <div className={`min-h-screen ${darkMode ? "bg-black text-white" : "bg-gray-50 text-gray-900"} transition-colors duration-500`}> 
+      <div className="p-8 max-w-3xl mx-auto text-center">
+        <motion.h1 initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}
+          className="text-4xl font-semibold tracking-wide mb-6">Interview Scheduler</motion.h1>
+        
+        <button onClick={() => setDarkMode(!darkMode)} className="p-2 rounded-full bg-gray-800 text-white hover:bg-gray-600 transition-all"> 
+          {darkMode ? "🌙 Dark Mode" : "☀️ Light Mode"}
+        </button>
 
-        {/* Message */}
         {message && (
-          <p
-            className={`mb-4 p-4 rounded-lg ${
-              message.includes("successfully")
-                ? "bg-green-100 text-green-700"
-                : "bg-red-100 text-red-700"
-            }`}
-          >
-            {message}
-          </p>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+            className={`mt-4 p-4 rounded-lg ${message.includes("success") ? "bg-green-600" : "bg-red-600"}`}>{message}</motion.p>
         )}
 
-        {/* Form */}
-        <div className="mb-8">
-          <Input
-            type="text"
-            placeholder="Your Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className={`mb-4 ${darkMode ? "bg-gray-800 text-white" : "bg-white"}`}
-          />
-          <Input
-            type="email"
-            placeholder="Your Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className={`${darkMode ? "bg-gray-800 text-white" : "bg-white"}`}
-          />
+        <div className="mt-6 space-y-4">
+          <input type="text" placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)}
+            className="w-full p-3 rounded-lg bg-gray-900 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500" />
+          <input type="email" placeholder="Your Email" value={email} onChange={(e) => setEmail(e.target.value)}
+            className="w-full p-3 rounded-lg bg-gray-900 text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500" />
         </div>
 
-        {/* Slots */}
-        <h2 className="text-2xl font-bold mb-4">Available Slots</h2>
-        {slots.length > 0 ? (
-          slots.map((slot) => (
-            <Card
-              key={slot.id}
-              className={`mb-4 p-6 flex justify-between items-center transition-transform transform hover:scale-105 ${
-                darkMode ? "bg-gray-800" : "bg-white"
-              }`}
-            >
+        <h2 className="text-2xl font-semibold mt-8">Available Slots</h2>
+        <div className="mt-4 space-y-4">
+          {slots.length > 0 ? slots.map((slot) => (
+            <motion.div key={slot.id} whileHover={{ scale: 1.03 }} transition={{ duration: 0.3 }}
+              className="p-5 bg-gray-800 rounded-lg flex justify-between items-center shadow-xl">
               <span className="text-lg">{new Date(slot.date_time).toLocaleString()}</span>
-              <Button
-                onClick={() => bookSlot(slot.id)}
-                disabled={loadingSlots[slot.id]}
-                className={`${
-                  loadingSlots[slot.id]
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-blue-500 hover:bg-blue-600"
-                } text-white font-semibold py-2 px-4 rounded-lg transition-colors`}
-              >
-                {loadingSlots[slot.id] ? "Booking..." : "Book"}
-              </Button>
-            </Card>
-          ))
-        ) : (
-          <p className="text-gray-500">No available slots.</p>
-        )}
+              <button onClick={() => bookSlot(slot.id)} disabled={loadingSlots[slot.id]}
+                className="px-4 py-2 rounded-lg font-semibold text-white bg-red-600 hover:bg-red-700 transition-all">
+                {loadingSlots[slot.id] ? "Booking..." : "Book Now"}
+              </button>
+            </motion.div>
+          )) : <p className="text-gray-400">No available slots.</p>}
+        </div>
       </div>
     </div>
   );
