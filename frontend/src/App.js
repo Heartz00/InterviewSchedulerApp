@@ -10,6 +10,9 @@ function App() {
       <div className="App">
         {/* Navigation Bar */}
         <nav className="navbar">
+          <div className="navbar-logo">
+            <img src="/logo.png" alt="Pax Logo" className="logo" /> {/* Add your logo here */}
+          </div>
           <h1 className="nav-links">
             Pax Interview Scheduler
           </h1>
