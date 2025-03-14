@@ -6,7 +6,7 @@
 
 /* Navigation Bar */
 .navbar {
-  background-color: #3b82f6; /* Blue background for the navbar */
+  background-color: #0F172A; /* Blue background for the navbar */
   padding: 1rem; /* Add some padding */
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Add a shadow */
 }
