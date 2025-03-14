@@ -5,6 +5,7 @@
 }
 
 .nav-links {
+  colors:white;
   list-style: none;
   display: flex;
   justify-content: center;
