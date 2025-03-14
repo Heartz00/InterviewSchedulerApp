@@ -13,7 +13,7 @@ const AdminPanel = () => {
   // Fetch booked slots on component mount
   useEffect(() => {
     axios
-      .get("http://50.17.224.101:5020/booked-slots")
+      .get("https://attendance-app-phi.vercel.app/api/booked-slots")
       .then((response) => {
         setBookedSlots(response.data);
       })
@@ -66,7 +66,7 @@ const AdminPanel = () => {
     }
 
     axios
-      .post("http://50.17.224.101:5020/create-slots", { days, times })
+      .post("https://attendance-app-phi.vercel.app/api/create-slots", { days, times })
       .then((response) => {
         setCreateMessage("Slots created successfully!");
         setDays([""]); // Reset to one day
@@ -81,7 +81,7 @@ const AdminPanel = () => {
   const clearSlots = () => {
     if (window.confirm("Are you sure you want to clear all slots? This action cannot be undone.")) {
       axios
-        .post("http://50.17.224.101:5020/clear-slots")
+        .post("https://attendance-app-phi.vercel.app/api/clear-slots")
         .then((response) => {
           setCreateMessage("All slots cleared successfully!");
           setBookedSlots([]); // Clear the booked slots list
