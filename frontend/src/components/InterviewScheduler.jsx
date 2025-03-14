@@ -13,7 +13,7 @@ const InterviewScheduler = () => {
   useEffect(() => {
     const fetchSlots = async () => {
       try {
-        const response = await axios.get("http://50.17.224.101:5020/slots");
+        const response = await axios.get("https://attendance-app-phi.vercel.app/api/slots");
         setSlots(response.data);
       } catch (error) {
         console.error("Failed to fetch slots:", error);
@@ -35,7 +35,7 @@ const InterviewScheduler = () => {
   setLoadingSlots((prev) => ({ ...prev, [slotId]: true }));
 
   try {
-    const response = await axios.post("http://50.17.224.101:5020/book", {
+    const response = await axios.post("https://attendance-app-phi.vercel.app/api/book", {
       slotId,
       name,
       email,
