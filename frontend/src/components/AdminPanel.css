@@ -83,83 +83,91 @@
 }
 
 .remove-button {
-  background-color: #ef4444; /* bg-red-500 */
+  background: linear-gradient(145deg, #ef4444, #dc2626); /* Gradient for modern look */
   color: white;
-  padding: 0.5rem 1rem; /* Adjusted padding */
+  padding: 0.75rem 1.5rem; /* Adjusted padding */
   border-radius: 0.5rem; /* rounded-lg */
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.2s; /* Added transform for hover effect */
+  font-size: 1rem; /* Standard font size */
+  transition: transform 0.2s, box-shadow 0.2s; /* Added transform and shadow for hover effect */
+  box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.3), 0 2px 4px -1px rgba(239, 68, 68, 0.2); /* Subtle shadow */
 }
 
 .remove-button:hover {
-  background-color: #dc2626; /* hover:bg-red-600 */
-  transform: scale(1.05); /* Slight scale effect on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+  box-shadow: 0 6px 8px -1px rgba(239, 68, 68, 0.4), 0 4px 6px -1px rgba(239, 68, 68, 0.3); /* Enhanced shadow on hover */
 }
 
 .add-button {
-  background-color: #22c55e; /* bg-green-500 */
+  background: linear-gradient(145deg, #22c55e, #16a34a); /* Gradient for modern look */
   color: white;
-  padding: 0.5rem 1rem; /* Adjusted padding */
+  padding: 0.75rem 1.5rem; /* Adjusted padding */
   border-radius: 0.5rem; /* rounded-lg */
   border: none;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.2s; /* Added transform for hover effect */
+  font-size: 1rem; /* Standard font size */
+  transition: transform 0.2s, box-shadow 0.2s; /* Added transform and shadow for hover effect */
+  box-shadow: 0 4px 6px -1px rgba(34, 197, 94, 0.3), 0 2px 4px -1px rgba(34, 197, 94, 0.2); /* Subtle shadow */
 }
 
 .add-button:hover {
-  background-color: #16a34a; /* hover:bg-green-600 */
-  transform: scale(1.05); /* Slight scale effect on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+  box-shadow: 0 6px 8px -1px rgba(34, 197, 94, 0.4), 0 4px 6px -1px rgba(34, 197, 94, 0.3); /* Enhanced shadow on hover */
 }
 
 /* Action Buttons */
 .action-buttons {
   display: flex;
-  gap: 1rem; /* space-x-4 */
+  gap: 1.5rem; /* Increased gap for better spacing */
   justify-content: center; /* Center-align buttons */
-  margin-top: 1.5rem; /* Added margin for better spacing */
+  margin-top: 2rem; /* Added margin for better spacing */
 }
 
 .create-button {
-  background-color: #3b82f6; /* bg-blue-500 */
+  background: linear-gradient(145deg, #3b82f6, #2563eb); /* Gradient for modern look */
   color: white;
   padding: 0.75rem 1.5rem; /* Adjusted padding */
   border-radius: 0.5rem; /* rounded-lg */
   border: none;
   cursor: pointer;
   font-size: 1rem; /* Standard font size */
-  transition: background-color 0.2s, transform 0.2s; /* Added transform for hover effect */
+  transition: transform 0.2s, box-shadow 0.2s; /* Added transform and shadow for hover effect */
+  box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3), 0 2px 4px -1px rgba(59, 130, 246, 0.2); /* Subtle shadow */
 }
 
 .create-button:hover {
-  background-color: #2563eb; /* hover:bg-blue-600 */
-  transform: scale(1.05); /* Slight scale effect on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+  box-shadow: 0 6px 8px -1px rgba(59, 130, 246, 0.4), 0 4px 6px -1px rgba(59, 130, 246, 0.3); /* Enhanced shadow on hover */
 }
 
 .create-button:disabled {
-  background-color: #93c5fd; /* disabled:bg-blue-300 */
+  background: #93c5fd; /* disabled:bg-blue-300 */
   cursor: not-allowed; /* Change cursor for disabled state */
+  box-shadow: none; /* Remove shadow for disabled state */
 }
 
 .clear-button {
-  background-color: #ef4444; /* bg-red-500 */
+  background: linear-gradient(145deg, #ef4444, #dc2626); /* Gradient for modern look */
   color: white;
   padding: 0.75rem 1.5rem; /* Adjusted padding */
   border-radius: 0.5rem; /* rounded-lg */
   border: none;
   cursor: pointer;
   font-size: 1rem; /* Standard font size */
-  transition: background-color 0.2s, transform 0.2s; /* Added transform for hover effect */
+  transition: transform 0.2s, box-shadow 0.2s; /* Added transform and shadow for hover effect */
+  box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.3), 0 2px 4px -1px rgba(239, 68, 68, 0.2); /* Subtle shadow */
 }
 
 .clear-button:hover {
-  background-color: #dc2626; /* hover:bg-red-600 */
-  transform: scale(1.05); /* Slight scale effect on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+  box-shadow: 0 6px 8px -1px rgba(239, 68, 68, 0.4), 0 4px 6px -1px rgba(239, 68, 68, 0.3); /* Enhanced shadow on hover */
 }
 
 .clear-button:disabled {
-  background-color: #fca5a5; /* disabled:bg-red-300 */
+  background: #fca5a5; /* disabled:bg-red-300 */
   cursor: not-allowed; /* Change cursor for disabled state */
+  box-shadow: none; /* Remove shadow for disabled state */
 }
 
 /* Booked Slots Section */
