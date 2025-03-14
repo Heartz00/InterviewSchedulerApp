@@ -1,29 +1,19 @@
-/* App.css */
+
+/* Base styles */
+.App {
+  text-align: center;
+}
+
+/* Navigation Bar */
 .navbar {
-  background-color: #282c34;
-  padding: 1rem;
+  background-color: #3b82f6; /* Blue background for the navbar */
+  padding: 1rem; /* Add some padding */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Add a shadow */
 }
 
 .nav-links {
-  colors:white;
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links li {
-  colors:white;
-  margin: 0 1rem;
-}
-
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.2rem;
-}
-
-.nav-links a:hover {
-  text-decoration: underline;
+  color: white; /* Make the text white */
+  font-size: 1.5rem; /* Increase font size */
+  font-weight: 600; /* Make the text bold */
+  margin: 0; /* Remove default margin */
 }
