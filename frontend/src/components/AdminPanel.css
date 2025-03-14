@@ -2,169 +2,199 @@
 
 /* Base styles */
 .admin-panel {
-  padding: 1.5rem; /* p-6 */
-  max-width: 56rem; /* max-w-4xl */
+  padding: 2rem; /* Increased padding for better spacing */
+  max-width: 64rem; /* Slightly wider for better readability */
   margin-left: auto;
   margin-right: auto;
   background-color: #f9fafb; /* bg-gray-50 */
   min-height: 100vh; /* min-h-screen */
+  font-family: "Inter", sans-serif; /* Modern font */
 }
 
 /* Create Slots Section */
 .create-slots-section {
   background-color: white;
-  padding: 1.5rem; /* p-6 */
-  border-radius: 0.5rem; /* rounded-lg */
+  padding: 2rem; /* Increased padding */
+  border-radius: 0.75rem; /* Slightly larger radius for a softer look */
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
-  margin-bottom: 2rem; /* mb-8 */
+  margin-bottom: 2.5rem; /* Increased margin for better separation */
 }
 
 .create-slots-heading {
-  font-size: 1.5rem; /* text-2xl */
+  font-size: 1.75rem; /* Slightly larger heading */
   font-weight: 700; /* font-bold */
-  margin-bottom: 1.5rem; /* mb-6 */
+  margin-bottom: 1.75rem; /* Adjusted margin */
   color: #1a202c; /* text-gray-800 */
+  text-align: center; /* Center-align the heading */
 }
 
 .create-slots-message {
-  margin-bottom: 1rem; /* mb-4 */
-  padding: 0.75rem; /* p-3 */
+  margin-bottom: 1.25rem; /* Adjusted margin */
+  padding: 1rem; /* Increased padding */
   border-radius: 0.5rem; /* rounded-lg */
+  font-size: 0.95rem; /* Slightly smaller font for messages */
+  text-align: center; /* Center-align the message */
 }
 
 .create-slots-message.success {
   background-color: #dcfce7; /* bg-green-100 */
   color: #166534; /* text-green-700 */
+  border: 1px solid #bbf7d0; /* Add a subtle border */
 }
 
 .create-slots-message.error {
   background-color: #fee2e2; /* bg-red-100 */
   color: #991b1b; /* text-red-700 */
+  border: 1px solid #fecaca; /* Add a subtle border */
 }
 
 /* Days and Times Section */
 .days-times-section {
-  margin-bottom: 1.5rem; /* mb-6 */
+  margin-bottom: 2rem; /* Increased margin */
 }
 
 .days-times-heading {
-  font-size: 1.125rem; /* text-lg */
+  font-size: 1.25rem; /* Slightly larger heading */
   font-weight: 600; /* font-semibold */
-  margin-bottom: 1rem; /* mb-4 */
+  margin-bottom: 1.25rem; /* Adjusted margin */
   color: #374151; /* text-gray-700 */
 }
 
 .input-group {
-  margin-bottom: 0.75rem; /* mb-3 */
+  margin-bottom: 1rem; /* Increased margin */
   display: flex;
   align-items: center;
+  gap: 0.75rem; /* Added gap for better spacing */
 }
 
 .input-field {
   border: 1px solid #d1d5db; /* border */
-  padding: 0.5rem; /* p-2 */
+  padding: 0.75rem; /* Increased padding */
   border-radius: 0.5rem; /* rounded-lg */
   width: 100%;
   outline: none;
+  font-size: 1rem; /* Standard font size */
+  transition: border-color 0.2s, box-shadow 0.2s; /* Smooth transitions */
 }
 
 .input-field:focus {
   border-color: #3b82f6; /* focus:ring-blue-500 */
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); /* focus:ring-2 */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); /* focus:ring-2 with a larger spread */
 }
 
 .remove-button {
-  margin-left: 0.75rem; /* ml-3 */
   background-color: #ef4444; /* bg-red-500 */
   color: white;
-  padding: 0.5rem 0.75rem; /* px-3 py-2 */
+  padding: 0.5rem 1rem; /* Adjusted padding */
   border-radius: 0.5rem; /* rounded-lg */
-  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s; /* Added transform for hover effect */
 }
 
 .remove-button:hover {
   background-color: #dc2626; /* hover:bg-red-600 */
+  transform: scale(1.05); /* Slight scale effect on hover */
 }
 
 .add-button {
   background-color: #22c55e; /* bg-green-500 */
   color: white;
-  padding: 0.5rem 1rem; /* px-4 py-2 */
+  padding: 0.5rem 1rem; /* Adjusted padding */
   border-radius: 0.5rem; /* rounded-lg */
-  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s; /* Added transform for hover effect */
 }
 
 .add-button:hover {
   background-color: #16a34a; /* hover:bg-green-600 */
+  transform: scale(1.05); /* Slight scale effect on hover */
 }
 
 /* Action Buttons */
 .action-buttons {
   display: flex;
   gap: 1rem; /* space-x-4 */
+  justify-content: center; /* Center-align buttons */
+  margin-top: 1.5rem; /* Added margin for better spacing */
 }
 
 .create-button {
   background-color: #3b82f6; /* bg-blue-500 */
   color: white;
-  padding: 0.5rem 1.5rem; /* px-6 py-2 */
+  padding: 0.75rem 1.5rem; /* Adjusted padding */
   border-radius: 0.5rem; /* rounded-lg */
-  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem; /* Standard font size */
+  transition: background-color 0.2s, transform 0.2s; /* Added transform for hover effect */
 }
 
 .create-button:hover {
   background-color: #2563eb; /* hover:bg-blue-600 */
+  transform: scale(1.05); /* Slight scale effect on hover */
 }
 
 .create-button:disabled {
   background-color: #93c5fd; /* disabled:bg-blue-300 */
+  cursor: not-allowed; /* Change cursor for disabled state */
 }
 
 .clear-button {
   background-color: #ef4444; /* bg-red-500 */
   color: white;
-  padding: 0.5rem 1.5rem; /* px-6 py-2 */
+  padding: 0.75rem 1.5rem; /* Adjusted padding */
   border-radius: 0.5rem; /* rounded-lg */
-  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem; /* Standard font size */
+  transition: background-color 0.2s, transform 0.2s; /* Added transform for hover effect */
 }
 
 .clear-button:hover {
   background-color: #dc2626; /* hover:bg-red-600 */
+  transform: scale(1.05); /* Slight scale effect on hover */
 }
 
 .clear-button:disabled {
   background-color: #fca5a5; /* disabled:bg-red-300 */
+  cursor: not-allowed; /* Change cursor for disabled state */
 }
 
 /* Booked Slots Section */
 .booked-slots-section {
   background-color: white;
-  padding: 1.5rem; /* p-6 */
-  border-radius: 0.5rem; /* rounded-lg */
+  padding: 2rem; /* Increased padding */
+  border-radius: 0.75rem; /* Slightly larger radius */
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
 }
 
 .booked-slots-heading {
-  font-size: 1.5rem; /* text-2xl */
+  font-size: 1.75rem; /* Slightly larger heading */
   font-weight: 700; /* font-bold */
-  margin-bottom: 1.5rem; /* mb-6 */
+  margin-bottom: 1.75rem; /* Adjusted margin */
   color: #1a202c; /* text-gray-800 */
+  text-align: center; /* Center-align the heading */
 }
 
 .booked-slot-card {
-  margin-bottom: 1rem; /* mb-4 */
-  padding: 1rem; /* p-4 */
+  margin-bottom: 1.25rem; /* Adjusted margin */
+  padding: 1.25rem; /* Increased padding */
   border: 1px solid #e5e7eb; /* border */
   border-radius: 0.5rem; /* rounded-lg */
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, transform 0.2s; /* Added transform for hover effect */
 }
 
 .booked-slot-card:hover {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* hover:shadow-md */
+  transform: translateY(-2px); /* Slight lift effect on hover */
 }
 
 .booked-slot-text {
   color: #374151; /* text-gray-700 */
+  font-size: 1rem; /* Standard font size */
+  line-height: 1.5; /* Improved readability */
 }
 
 .booked-slot-text strong {
@@ -173,4 +203,6 @@
 
 .loading-text {
   color: #6b7280; /* text-gray-600 */
+  text-align: center; /* Center-align loading text */
+  font-size: 1rem; /* Standard font size */
 }
