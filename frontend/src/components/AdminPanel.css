@@ -100,7 +100,7 @@
 }
 
 .add-button {
-  background: linear-gradient(145deg, #22c55e, #16a34a); /* Gradient for modern look */
+  background: linear-gradient(145deg, #3b82f6, #0F172A); /* Gradient for modern look */
   color: white;
   padding: 0.75rem 1.5rem; /* Adjusted padding */
   border-radius: 0.5rem; /* rounded-lg */
@@ -125,7 +125,7 @@
 }
 
 .create-button {
-  background: linear-gradient(145deg, #3b82f6, #2563eb); /* Gradient for modern look */
+  background: linear-gradient(145deg, #3b82f6, #0F172A); /* Gradient for modern look */
   color: white;
   padding: 0.75rem 1.5rem; /* Adjusted padding */
   border-radius: 0.5rem; /* rounded-lg */
