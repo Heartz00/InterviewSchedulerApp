@@ -178,6 +178,38 @@
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
 }
 
+/* Booked Slots Table */
+.booked-slots-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem; /* Add spacing above the table */
+  background-color: white;
+  border-radius: 0.5rem; /* Rounded corners */
+  overflow: hidden; /* Ensure rounded corners are visible */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Subtle shadow */
+}
+
+.booked-slots-table th,
+.booked-slots-table td {
+  padding: 1rem; /* Add padding to cells */
+  text-align: left; /* Align text to the left */
+  border-bottom: 1px solid #e5e7eb; /* Add a border between rows */
+}
+
+.booked-slots-table th {
+  background-color: #3b82f6; /* Blue header background */
+  color: white; /* White text for headers */
+  font-weight: 600; /* Bold headers */
+}
+
+.booked-slots-table tr:last-child td {
+  border-bottom: none; /* Remove border from the last row */
+}
+
+.booked-slots-table tr:hover {
+  background-color: #f9fafb; /* Light gray background on hover */
+}
+
 .booked-slots-heading {
   font-size: 1.75rem; /* Slightly larger heading */
   font-weight: 700; /* font-bold */
