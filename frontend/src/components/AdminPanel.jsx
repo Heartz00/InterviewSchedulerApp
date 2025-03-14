@@ -75,7 +75,7 @@ const AdminPanel = () => {
       .catch((error) => {
         setCreateMessage("Failed to create slots.");
       });
-  };
+  }; 
 
   // Clear all slots
   const clearSlots = () => {
