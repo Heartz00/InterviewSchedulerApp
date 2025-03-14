@@ -4,13 +4,34 @@
   text-align: center;
 }
 
+
+.nav-links {
+  color: white; /* Make the text white */
+  font-size: 1.5rem; /* Increase font size */
+  font-weight: 600; /* Make the text bold */
+  margin: 0; /* Remove default margin */
+}
+
 /* Navigation Bar */
 .navbar {
+  display: flex;
+  align-items: center; /* Vertically center the logo and text */
   background-color: #0F172A; /* Blue background for the navbar */
   padding: 1rem; /* Add some padding */
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Add a shadow */
 }
 
+/* Logo */
+.navbar-logo {
+  margin-right: 1rem; /* Add spacing between the logo and the text */
+}
+
+.logo {
+  height: 40px; /* Adjust the height of the logo */
+  width: auto; /* Maintain aspect ratio */
+}
+
+/* Navigation Links */
 .nav-links {
   color: white; /* Make the text white */
   font-size: 1.5rem; /* Increase font size */
