@@ -1,0 +1,165 @@
+/* InterviewScheduler.css */
+
+/* Base styles */
+.interview-scheduler {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+.interview-scheduler.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+.interview-scheduler.light-mode {
+  background-color: #f9fafb; /* bg-gray-50 */
+  color: #1a202c; /* text-gray-900 */
+}
+
+/* Container */
+.container {
+  padding: 2rem;
+  width: 100%;
+  max-width: 42rem; /* max-w-2xl */
+  text-align: center;
+}
+
+/* Heading */
+.heading {
+  font-size: 2.25rem; /* text-4xl */
+  font-weight: 600; /* font-semibold */
+  letter-spacing: -0.025em; /* tracking-wide */
+  margin-bottom: 1.5rem; /* mb-6 */
+}
+
+/* Subheading */
+.subheading {
+  font-size: 1.125rem; /* text-lg */
+  margin-bottom: 1.5rem; /* mb-6 */
+}
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+  margin-bottom: 1.5rem; /* mb-6 */
+  padding: 0.5rem; /* p-2 */
+  border-radius: 9999px; /* rounded-full */
+  background-color: #1f2937; /* bg-gray-800 */
+  color: white;
+  transition: background-color 0.2s;
+}
+
+.dark-mode-toggle:hover {
+  background-color: #4b5563; /* hover:bg-gray-600 */
+}
+
+/* Message */
+.message {
+  margin-top: 1rem; /* mt-4 */
+  padding: 1rem; /* p-4 */
+  border-radius: 0.5rem; /* rounded-lg */
+  color: white;
+}
+
+.message.success {
+  background-color: #16a34a; /* bg-green-600 */
+}
+
+.message.error {
+  background-color: #dc2626; /* bg-red-600 */
+}
+
+/* Form */
+.form {
+  margin-top: 1.5rem; /* mt-6 */
+  width: 100%;
+  max-width: 28rem; /* max-w-md */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* space-y-2 */
+}
+
+.form-label {
+  text-align: left;
+  font-weight: 500; /* font-medium */
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem; /* p-3 */
+  border-radius: 0.5rem; /* rounded-lg */
+  background-color: #edf2f7; /* bg-gray-200 */
+  color: #1a202c; /* text-gray-900 */
+  border: 1px solid #cbd5e0; /* border-gray-300 */
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: #3b82f6; /* focus:ring-blue-500 */
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); /* focus:ring-2 */
+}
+
+/* Slots */
+.slots-container {
+  margin-top: 3rem; /* mt-12 */
+  margin-bottom: 1.5rem; /* mb-6 */
+}
+
+.slots-heading {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 600; /* font-semibold */
+}
+
+.slot-card {
+  padding: 1.5rem; /* p-6 */
+  background-color: white;
+  border-radius: 0.5rem; /* rounded-lg */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem; /* space-y-4 */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-lg */
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.slot-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* hover:shadow-xl */
+  transform: scale(1.03); /* whileHover: scale(1.03) */
+}
+
+.slot-time {
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 500; /* font-medium */
+  color: #1a202c; /* text-gray-800 */
+}
+
+.book-button {
+  padding: 0.5rem 1.5rem; /* px-6 py-2 */
+  border-radius: 0.5rem; /* rounded-lg */
+  font-weight: 600; /* font-semibold */
+  color: white;
+  background-color: #3b82f6; /* bg-blue-600 */
+  transition: background-color 0.2s;
+}
+
+.book-button:hover {
+  background-color: #2563eb; /* hover:bg-blue-700 */
+}
+
+.book-button:disabled {
+  background-color: #93c5fd; /* disabled:bg-blue-300 */
+}
+
+/* No slots message */
+.no-slots {
+  color: #718096; /* text-gray-400 */
+}
