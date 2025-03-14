@@ -8,7 +8,7 @@ const InterviewScheduler = () => {
   const [email, setEmail] = useState("");
   const [loadingSlots, setLoadingSlots] = useState({});
   const [message, setMessage] = useState("");
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const fetchSlots = async () => {
@@ -42,13 +42,13 @@ const InterviewScheduler = () => {
   };
 
   return (
-    <div className={`min-h-screen ${darkMode ? "bg-black text-white" : "bg-gray-50 text-gray-900"} transition-colors duration-500`}> 
-      <div className="p-8 max-w-3xl mx-auto text-center">
+    <div className={`min-h-screen flex flex-col items-center justify-center ${darkMode ? "bg-black text-white" : "bg-gray-50 text-gray-900"} transition-colors duration-500`}>
+      <div className="p-8 w-full max-w-xl text-center">
         <motion.h1 initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}
-          className="text-4xl font-semibold tracking-wide mb-6">Interview Scheduler</motion.h1>
+          className="text-4xl font-semibold tracking-wide mb-6">Pax Interview Scheduler</motion.h1>
         
-        <button onClick={() => setDarkMode(!darkMode)} className="p-2 rounded-full bg-gray-800 text-white hover:bg-gray-600 transition-all"> 
-          {darkMode ? "🌙 Dark Mode" : "☀️ Light Mode"}
+        <button onClick={() => setDarkMode(!darkMode)} className="mb-6 p-2 rounded-full bg-gray-800 text-white hover:bg-gray-600 transition-all">
+          {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
         </button>
 
         {message && (
@@ -67,8 +67,8 @@ const InterviewScheduler = () => {
         <div className="mt-4 space-y-4">
           {slots.length > 0 ? slots.map((slot) => (
             <motion.div key={slot.id} whileHover={{ scale: 1.03 }} transition={{ duration: 0.3 }}
-              className="p-5 bg-gray-800 rounded-lg flex justify-between items-center shadow-xl">
-              <span className="text-lg">{new Date(slot.date_time).toLocaleString()}</span>
+              className="p-5 bg-gray-800 rounded-lg flex flex-col md:flex-row justify-between items-center shadow-xl space-y-3 md:space-y-0">
+              <span className="text-lg font-medium">{new Date(slot.date_time).toLocaleString()}</span>
               <button onClick={() => bookSlot(slot.id)} disabled={loadingSlots[slot.id]}
                 className="px-4 py-2 rounded-lg font-semibold text-white bg-red-600 hover:bg-red-700 transition-all">
                 {loadingSlots[slot.id] ? "Booking..." : "Book Now"}
