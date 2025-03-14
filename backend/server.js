@@ -12,7 +12,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 app.use(express.json());
 // Enable CORS for all routes
 app.use(cors({
-  origin: "http://50.17.224.101:3020", // Allow requests from this origin
+  origin: "https://interview-scheduler-frontend.vercel.app", // Allow requests from this origin
   methods: ["GET", "POST", "OPTIONS"], // Allow these HTTP methods
   allowedHeaders: ["Content-Type", "Authorization"], // Allow these headers
 }));
