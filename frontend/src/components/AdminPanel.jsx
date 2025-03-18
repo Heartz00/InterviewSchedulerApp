@@ -11,12 +11,17 @@ const AdminPanel = () => {
   const [bookedSlots, setBookedSlots] = useState([]);
   const [isFetchingBookedSlots, setIsFetchingBookedSlots] = useState(false);
 
+  // Fetch booked slots on component mount
   useEffect(() => {
     const fetchBookedSlots = async () => {
       setIsFetchingBookedSlots(true);
       try {
         const response = await axios.get("https://attendance-app-phi.vercel.app/api/booked-slots");
-        setBookedSlots(response.data);
+        // Sort slots by date (closest first)
+        const sortedSlots = response.data.sort(
+          (a, b) => new Date(a.date_time) - new Date(b.date_time)
+        );
+        setBookedSlots(sortedSlots);
       } catch (error) {
         console.error("Failed to fetch booked slots:", error);
         setCreateMessage("Failed to fetch booked slots. Please try again later.");
@@ -27,36 +32,43 @@ const AdminPanel = () => {
     fetchBookedSlots();
   }, []);
 
+  // Handle day input change
   const handleDayChange = (index, value) => {
     const newDays = [...days];
     newDays[index] = value;
     setDays(newDays);
   };
 
+  // Handle time input change
   const handleTimeChange = (index, value) => {
     const newTimes = [...times];
     newTimes[index] = value;
     setTimes(newTimes);
   };
 
+  // Add a new day
   const addDay = () => {
     setDays([...days, ""]);
   };
 
+  // Remove a day
   const removeDay = (index) => {
     const newDays = days.filter((_, i) => i !== index);
     setDays(newDays);
   };
 
+  // Add a new time
   const addTime = () => {
     setTimes([...times, ""]);
   };
 
+  // Remove a time
   const removeTime = (index) => {
     const newTimes = times.filter((_, i) => i !== index);
     setTimes(newTimes);
   };
 
+  // Create slots
   const createSlots = async () => {
     if (days.some((day) => !day) || times.some((time) => !time)) {
       setCreateMessage("Please fill in all days and times.");
@@ -76,6 +88,7 @@ const AdminPanel = () => {
     }
   };
 
+  // Clear all slots
   const clearSlots = async () => {
     if (!window.confirm("Are you sure you want to clear all slots? This action cannot be undone.")) {
       return;
@@ -93,7 +106,7 @@ const AdminPanel = () => {
     }
   };
 
-  // Function to delete a specific slot
+  // Delete a specific slot
   const deleteSlot = async (slotId) => {
     if (!window.confirm("Are you sure you want to delete this slot?")) {
       return;
@@ -105,6 +118,22 @@ const AdminPanel = () => {
       setBookedSlots(bookedSlots.filter((slot) => slot.id !== slotId)); // Remove the deleted slot from the list
     } catch (error) {
       setCreateMessage("Failed to delete slot. Please try again.");
+    }
+  };
+
+  // Mark an interview as done
+  const markAsDone = async (slotId) => {
+    if (!window.confirm("Are you sure you want to mark this interview as done?")) {
+      return;
+    }
+
+    try {
+      await axios.post(`https://attendance-app-phi.vercel.app/api/mark-as-done/${slotId}`);
+      setCreateMessage("Interview marked as done successfully!");
+      // Update the booked slots list to reflect the change
+      setBookedSlots(bookedSlots.filter((slot) => slot.id !== slotId));
+    } catch (error) {
+      setCreateMessage("Failed to mark interview as done. Please try again.");
     }
   };
 
@@ -120,9 +149,9 @@ const AdminPanel = () => {
         )}
 
         <div className="days-times-section">
-        <h4 className="days-times-heading" style={{ fontStyle: "italic" }}>
-          Note that the times you create will be applicable for each day you create.
-        </h4>
+          <h4 className="days-times-heading" style={{ fontStyle: "italic" }}>
+            Note that the times you create will be applicable for each day you create.
+          </h4>
           <h3 className="days-times-heading">Select Days</h3>
           {days.map((day, index) => (
             <div key={index} className="input-group">
@@ -192,7 +221,7 @@ const AdminPanel = () => {
                 <th>Date & Time</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Action</th> {/* New column for the delete button */}
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -207,6 +236,12 @@ const AdminPanel = () => {
                       className="delete-button"
                     >
                       Delete
+                    </button>
+                    <button
+                      onClick={() => markAsDone(slot.id)}
+                      className="mark-done-button"
+                    >
+                      Mark as Done
                     </button>
                   </td>
                 </tr>
