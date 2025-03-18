@@ -267,3 +267,22 @@
   background-color: #fca5a5; /* disabled:bg-red-300 */
   cursor: not-allowed;
 }
+
+.mark-done-button {
+  background-color: #4caf50; /* Green */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.mark-done-button:hover {
+  background-color: #45a049;
+}
+
+.mark-done-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
