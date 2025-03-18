@@ -117,6 +117,20 @@ app.post("/api/book", async (req, res) => {
       [name, email, slotId]
     );
 
+app.post("/mark-as-done/:slotId", (req, res) => {
+  const { slotId } = req.params;
+  db.run(
+    "UPDATE slots SET status = 'done' WHERE id = ?",
+    [slotId],
+    function (err) {
+      if (err) {
+        return res.status(500).json({ error: "Failed to mark slot as done" });
+      }
+      res.json({ success: true, message: "Slot marked as done successfully" });
+    }
+  );
+});
+
     // Send confirmation email with Zoom link
     const zoomLink = "https://us06web.zoom.us/j/7648724685?pwd=WkxmRGJrTkVBTEY3WE5lOGt1ZVBqQT09"; // Add your Zoom link here
     const msg = {
