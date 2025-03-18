@@ -6,14 +6,14 @@ const sgMail = require("@sendgrid/mail");
 const app = express();
 
 // Hardcoded SendGrid API key (not recommended for production)
-
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 app.use(express.json());
+
 // Enable CORS for all routes
 app.use(cors({
   origin: "https://interview-scheduler-frontend.vercel.app", // Allow requests from this origin
-  methods: ["GET", "POST", "OPTIONS"], // Allow these HTTP methods
+  methods: ["GET", "POST", "OPTIONS", "DELETE"], // Allow these HTTP methods (added DELETE)
   allowedHeaders: ["Content-Type", "Authorization"], // Allow these headers
 }));
 
@@ -45,11 +45,12 @@ app.get("/api/booked-slots", async (req, res) => {
   }
 });
 
+// API to delete a slot
 app.delete("/api/delete-slot/:id", async (req, res) => {
   const { id } = req.params;
   try {
     // Delete the slot from the database
-    await SlotModel.findByIdAndDelete(id);
+    await pool.query("DELETE FROM slots WHERE id = $1", [id]);
     res.status(200).json({ message: "Slot deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: "Failed to delete slot" });
@@ -117,20 +118,6 @@ app.post("/api/book", async (req, res) => {
       [name, email, slotId]
     );
 
-app.post("/mark-as-done/:slotId", (req, res) => {
-  const { slotId } = req.params;
-  db.run(
-    "UPDATE slots SET status = 'done' WHERE id = ?",
-    [slotId],
-    function (err) {
-      if (err) {
-        return res.status(500).json({ error: "Failed to mark slot as done" });
-      }
-      res.json({ success: true, message: "Slot marked as done successfully" });
-    }
-  );
-});
-
     // Send confirmation email with Zoom link
     const zoomLink = "https://us06web.zoom.us/j/7648724685?pwd=WkxmRGJrTkVBTEY3WE5lOGt1ZVBqQT09"; // Add your Zoom link here
     const msg = {
@@ -158,6 +145,17 @@ app.post("/mark-as-done/:slotId", (req, res) => {
   } catch (err) {
     console.error("Failed to book slot or send email", err);
     res.status(500).json({ error: "Failed to book slot or send email" });
+  }
+});
+
+// API to mark a slot as done
+app.post("/api/mark-as-done/:slotId", async (req, res) => {
+  const { slotId } = req.params;
+  try {
+    await pool.query("UPDATE slots SET status = 'done' WHERE id = $1", [slotId]);
+    res.json({ success: true, message: "Slot marked as done successfully" });
+  } catch (err) {
+    res.status(500).json({ error: "Failed to mark slot as done" });
   }
 });
 
