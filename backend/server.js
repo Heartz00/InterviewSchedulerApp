@@ -12,7 +12,7 @@ app.use(express.json());
 
 // Enable CORS for all routes
 app.use(cors({
-  origin: " ", // Allow requests from this origin
+  origin: "*", // Allow requests from this origin
   methods: ["GET", "POST", "OPTIONS", "DELETE"], // Allow these HTTP methods (added DELETE)
   allowedHeaders: ["Content-Type", "Authorization"], // Allow these headers
 }));
