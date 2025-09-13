@@ -10,12 +10,13 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 app.use(express.json());
 
-// Enable CORS for all routes
+
 app.use(cors({
-  origin: "*", // Allow requests from this origin
-  methods: ["GET", "POST", "OPTIONS", "DELETE"], // Allow these HTTP methods (added DELETE)
-  allowedHeaders: ["Content-Type", "Authorization"], // Allow these headers
+  origin: "https://attendance-app-phi.vercel.app",
+  methods: ["GET", "POST", "OPTIONS", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 }));
+
 
 // PostgreSQL connection pool
 const pool = new Pool({
