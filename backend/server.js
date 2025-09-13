@@ -12,7 +12,7 @@ app.use(express.json());
 
 
 app.use(cors({
-  origin: "https://attendance-app-phi.vercel.app",
+  origin: "https://interview-scheduler-frontend.vercel.app",
   methods: ["GET", "POST", "OPTIONS", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
