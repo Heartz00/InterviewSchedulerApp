@@ -11,28 +11,26 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 app.use(express.json());
 
 
+// CORS configuration
 const allowedOrigins = [
-  "https://attendance-app-phi.vercel.app",
-  "https://interview-scheduler-frontend.vercel.app"// production frontend
-  "http://localhost:3000",                 // local dev frontend
+  "https://interview-scheduler-frontend.vercel.app", // your frontend
 ];
 
 app.use(cors({
   origin: function (origin, callback) {
-    // allow requests with no origin (like mobile apps, curl, Postman)
-    if (!origin) return callback(null, true);
+    if (!origin) return callback(null, true); // allow Postman/curl requests
     if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
+      callback(null, true);
     } else {
-      return callback(new Error("Not allowed by CORS"));
+      callback(new Error("Not allowed by CORS"));
     }
   },
   methods: ["GET", "POST", "OPTIONS", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true, // if you plan to send cookies or auth headers
+  credentials: true, // if sending cookies or auth headers
 }));
 
-// Make sure preflight requests are handled
+// Handle preflight requests for all routes
 app.options("*", cors());
 
 
